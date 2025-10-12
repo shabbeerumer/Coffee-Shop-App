@@ -353,6 +353,7 @@
 // }
 import 'package:coffee_shop_app/component/mysizedbox.dart';
 import 'package:coffee_shop_app/component/mytext.dart';
+import 'package:coffee_shop_app/pages/detail_item.dart';
 import 'package:coffee_shop_app/utlls/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -678,14 +679,19 @@ class _homepageState extends State<homepage> {
                               data: '\$${mycoffiedata[index]['price'].toString()}',
                               fontWeight: FontWeight.bold,
                             ),
-                            Container(
-                              height: 25,
-                              width: 25,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: AppColors.browncolor,
+                            InkWell(
+                              child: Container(
+                                height: 25,
+                                width: 25,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: AppColors.browncolor,
+                                ),
+                                child: Icon(Icons.add, color: AppColors.whitecolor, size: 16),
                               ),
-                              child: Icon(Icons.add, color: AppColors.whitecolor, size: 16),
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => detail_item()));
+                              },
                             ),
                           ],
                         ),
