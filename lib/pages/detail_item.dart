@@ -1,9 +1,11 @@
 import 'package:coffee_shop_app/component/detail_page_boxes1.dart';
 import 'package:coffee_shop_app/component/mysizedbox.dart';
 import 'package:coffee_shop_app/component/mytext.dart';
+import 'package:coffee_shop_app/component/ordersbutton3.dart';
 import 'package:coffee_shop_app/utlls/colors.dart';
 import 'package:flutter/material.dart';
 import '../component/detail_page_boxes2.dart';
+import 'orders.dart';
 
 class detail_item extends StatefulWidget {
   const detail_item({super.key});
@@ -129,11 +131,18 @@ class _detail_itemState extends State<detail_item> {
                             children: [TextSpan(text: 'Price \n' , style: TextStyle(fontSize: 14 , color: AppColors.graycolor)) , TextSpan(text: "\$ 4.53" , style: TextStyle(color: AppColors.browncolor , fontSize: 18))]
                           )),
 
-                      Container(
-                        height: 50,
-                        width: 200,
-                        decoration: BoxDecoration(color: AppColors.browncolor,borderRadius: BorderRadius.circular(10)),
-                        child: Center(child: mytext(data: 'Buy Now' ,textAlign: TextAlign.center, color: AppColors.whitecolor,)),
+                      InkWell(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => orders() ));
+                        },
+                    child:
+                    ordersbutton3(text: 'Buy Now', height: 50, width: 200, color: AppColors.browncolor, textcolor: AppColors.whitecolor,)
+                        // Container(
+                        //   height: 50,
+                        //   width: 200,
+                        //   decoration: BoxDecoration(color: AppColors.browncolor,borderRadius: BorderRadius.circular(10)),
+                        //   child: Center(child: mytext(data: 'Buy Now' ,textAlign: TextAlign.center, color: AppColors.whitecolor,)),
+                        // ),
                       ),
 
                     ],
