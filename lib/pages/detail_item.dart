@@ -8,7 +8,11 @@ import '../component/detail_page_boxes2.dart';
 import 'orders.dart';
 
 class detail_item extends StatefulWidget {
-  const detail_item({super.key});
+  String image;
+  String title;
+  String description;
+  String price;
+   detail_item({super.key, required this.image , required this.title , required this.description , required this.price});
 
   @override
   State<detail_item> createState() => _detail_itemState();
@@ -34,16 +38,16 @@ class _detail_itemState extends State<detail_item> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(child: Image.asset('images/1Image.png')),
+                Center(child: Image.asset(widget.image)),
                 mysizedbox(
                   height: 10,
                 ),
-                mytext(data: 'Caffe Mocha' , fontSize: 20, fontWeight: FontWeight.bold,),
+                mytext(data: widget.title , fontSize: 20, fontWeight: FontWeight.bold,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    mytext(data: 'Ice/Hot' , fontSize: 12,),
+                    mytext(data: widget.description , fontSize: 12,),
 
                    Row(
 
@@ -128,21 +132,16 @@ class _detail_itemState extends State<detail_item> {
                     children: [
                       RichText(
                           text: TextSpan(
-                            children: [TextSpan(text: 'Price \n' , style: TextStyle(fontSize: 14 , color: AppColors.graycolor)) , TextSpan(text: "\$ 4.53" , style: TextStyle(color: AppColors.browncolor , fontSize: 18))]
+                            children: [TextSpan(text: 'Price \n' , style: TextStyle(fontSize: 14 , color: AppColors.graycolor)) , TextSpan(text: '\$${widget.price}' , style: TextStyle(color: AppColors.browncolor , fontSize: 18))]
                           )),
 
                       InkWell(
                         onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => orders() ));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => orders(image: widget.image, title: widget.title, description: widget.description, price: widget.price,) ));
                         },
                     child:
                     ordersbutton3(text: 'Buy Now', height: 50, width: 200, color: AppColors.browncolor, textcolor: AppColors.whitecolor,)
-                        // Container(
-                        //   height: 50,
-                        //   width: 200,
-                        //   decoration: BoxDecoration(color: AppColors.browncolor,borderRadius: BorderRadius.circular(10)),
-                        //   child: Center(child: mytext(data: 'Buy Now' ,textAlign: TextAlign.center, color: AppColors.whitecolor,)),
-                        // ),
+
                       ),
 
                     ],
