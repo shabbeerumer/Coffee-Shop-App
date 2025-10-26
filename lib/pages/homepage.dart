@@ -1,5 +1,6 @@
 import 'package:coffee_shop_app/component/mysizedbox.dart';
 import 'package:coffee_shop_app/component/mytext.dart';
+import 'package:coffee_shop_app/pages/cart.dart';
 import 'package:coffee_shop_app/pages/detail_item.dart';
 import 'package:coffee_shop_app/utlls/colors.dart';
 import 'package:flutter/material.dart';
@@ -122,6 +123,17 @@ class _homepageState extends State<homepage> {
         showSelectedLabels: false,
         onTap: (value) {
           bottomnav = value;
+
+          switch(value){
+            case 0:
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> homepage()));
+            break;
+            case 2:
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => cart()));
+          }
+
+
+
           setState(() {});
         },
         currentIndex: bottomnav,

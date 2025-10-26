@@ -5,6 +5,7 @@ import 'package:coffee_shop_app/utlls/colors.dart';
 import 'package:flutter/material.dart';
 import '../component/ordersbutton.dart';
 import '../component/ordersbutton2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class orders extends StatefulWidget {
   String image;
@@ -31,6 +32,43 @@ class _ordersState extends State<orders> {
     super.initState();
     baseprice = double.parse(widget.price);
     totalprice = baseprice;
+  }
+
+
+  Future datastore() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+
+    // Get existing cart data (if any)
+    List<String> existingCart = sp.getStringList('cart') ?? [];
+
+    // Create a single string for the new item
+    String newItem =
+        "${widget.image}|${widget.title}|${widget.description}|${totalprice.toString()}";
+
+    // Add new item to the existing list
+    existingCart.add(newItem);
+
+    // Save updated list back
+    sp.setStringList('cart', existingCart);
+
+    // Show confirmation dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: mytext(data: 'Added to Cart 🛒'),
+          content: mytext(data: '${widget.title} added successfully!'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: mytext(data: 'OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Widget build(BuildContext context) {
@@ -177,20 +215,26 @@ class _ordersState extends State<orders> {
               ),
               mysizedbox(height: 15),
 
-              Container(
-
-               height: 40,
-               width: double.infinity,
-               decoration: BoxDecoration(
-                 color: AppColors.browncolor,
-                 borderRadius: BorderRadius.circular(10)
-               ),
-               child: Center(child: mytext(data: 'Order' , color: AppColors.whitecolor,)),
-             )
+              InkWell(
+                onTap: (){
+                  datastore();
+                },
+                child: Container(
+                 height: 40,
+                 width: double.infinity,
+                 decoration: BoxDecoration(
+                   color: AppColors.browncolor,
+                   borderRadius: BorderRadius.circular(10)
+                 ),
+                 child: Center(child: mytext(data: 'Order' , color: AppColors.whitecolor,)),
+                             ),
+              )
             ],
           ),
         ),
       ),
     );
   }
+
+
 }
