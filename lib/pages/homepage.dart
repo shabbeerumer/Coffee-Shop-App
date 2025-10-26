@@ -126,10 +126,10 @@ class _homepageState extends State<homepage> {
 
           switch(value){
             case 0:
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> homepage()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> homepage()));
             break;
             case 2:
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => cart()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => cart()));
           }
 
 
