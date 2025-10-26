@@ -1,11 +1,8 @@
 import 'package:coffee_shop_app/component/detail_page_boxes1.dart';
-import 'package:coffee_shop_app/component/mysizedbox.dart';
-import 'package:coffee_shop_app/component/mytext.dart';
+import 'package:coffee_shop_app/component/detail_page_boxes2.dart';
 import 'package:coffee_shop_app/component/ordersbutton3.dart';
-import 'package:coffee_shop_app/utlls/colors.dart';
-import 'package:flutter/material.dart';
-import '../component/detail_page_boxes2.dart';
-import 'orders.dart';
+import 'package:coffee_shop_app/pages/orders.dart';
+import 'package:coffee_shop_app/utlls/packege.dart';
 
 class detail_item extends StatefulWidget {
   String image;
@@ -23,8 +20,10 @@ class _detail_itemState extends State<detail_item> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: mybottomNavigationBar(),
+
       appBar: AppBar(
-        actionsPadding: EdgeInsetsGeometry.only(right: 2),
+        actionsPadding: EdgeInsetsGeometry.only(right: 10),
         centerTitle: true,
         title: mytext(data: 'Detail'),
         actions: [

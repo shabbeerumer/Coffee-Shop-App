@@ -1,9 +1,5 @@
-import 'package:coffee_shop_app/component/mysizedbox.dart';
-import 'package:coffee_shop_app/component/mytext.dart';
-import 'package:coffee_shop_app/pages/cart.dart';
-import 'package:coffee_shop_app/pages/detail_item.dart';
-import 'package:coffee_shop_app/utlls/colors.dart';
-import 'package:flutter/material.dart';
+import 'package:coffee_shop_app/utlls/packege.dart';
+import 'detail_item.dart';
 
 class homepage extends StatefulWidget {
   const homepage({super.key});
@@ -100,7 +96,6 @@ class _homepageState extends State<homepage> {
   List<Map<String , dynamic>> filteredCoffee = [];
 
   var isselected = 0;
-  var bottomnav = 0;
 
   @override
   void initState() {
@@ -117,33 +112,7 @@ class _homepageState extends State<homepage> {
     bool isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
 
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: AppColors.browncolor,
-        unselectedItemColor: AppColors.graycolor,
-        showSelectedLabels: false,
-        onTap: (value) {
-          bottomnav = value;
-
-          switch(value){
-            case 0:
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> homepage()));
-            break;
-            case 2:
-            Navigator.push(context, MaterialPageRoute(builder: (context) => cart()));
-          }
-
-
-
-          setState(() {});
-        },
-        currentIndex: bottomnav,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'home'),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: 'heart'),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: 'shopping'),
-          BottomNavigationBarItem(icon: Icon(Icons.notifications_none), label: 'alarm'),
-        ],
-      ),
+      bottomNavigationBar: mybottomNavigationBar(),
 
       // ✅ Scrollable Layout
       body: SingleChildScrollView(

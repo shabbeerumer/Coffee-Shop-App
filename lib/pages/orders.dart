@@ -1,10 +1,7 @@
-import 'package:coffee_shop_app/component/mysizedbox.dart';
-import 'package:coffee_shop_app/component/mytext.dart';
+import 'package:coffee_shop_app/component/ordersbutton.dart';
+import 'package:coffee_shop_app/component/ordersbutton2.dart';
 import 'package:coffee_shop_app/component/ordersbutton3.dart';
-import 'package:coffee_shop_app/utlls/colors.dart';
-import 'package:flutter/material.dart';
-import '../component/ordersbutton.dart';
-import '../component/ordersbutton2.dart';
+import 'package:coffee_shop_app/utlls/packege.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class orders extends StatefulWidget {
@@ -73,6 +70,8 @@ class _ordersState extends State<orders> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: mybottomNavigationBar(),
+
       appBar: AppBar(centerTitle: true, title: Text('Orders')),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

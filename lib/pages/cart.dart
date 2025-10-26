@@ -1,5 +1,4 @@
-import 'package:coffee_shop_app/component/mytext.dart';
-import 'package:flutter/material.dart';
+import 'package:coffee_shop_app/utlls/packege.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -54,6 +53,8 @@ class _cartState extends State<cart> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: mybottomNavigationBar(),
+
       appBar: AppBar(
         centerTitle:  true,
         title: mytext(data: 'Add to cart'),

@@ -1,9 +1,6 @@
-import 'package:coffee_shop_app/component/mysizedbox.dart';
-import 'package:coffee_shop_app/component/mytext.dart';
-import 'package:coffee_shop_app/utlls/colors.dart';
-import 'package:flutter/material.dart';
+import 'package:coffee_shop_app/pages/homepage.dart';
+import 'package:coffee_shop_app/utlls/packege.dart';
 import 'package:flutter/services.dart';
-import 'homepage.dart';
 
 class firstpage extends StatefulWidget {
   const firstpage({super.key});
